@@ -70,7 +70,41 @@
     
 </section>
 
-<!-- End About Them -->
+<!-- End Cards Them -->
+<!--  articles -->
+<div class="container title d-flex flex-column justify-content-between align-items-center flex-lg-row my-5">
+    <h2 class="  text-center text-lg-center">Exemple de lucrari</h2>
+</div>
+</section>
+</div>
+<section id="articles" class=" articles my-5 py-5">
+<div class="container">
+    <div class="row">
+        @foreach($articles as $article)
+            <div class="col-md-4">
+            <div class="card bg-card radius">
+                <div class="card-body">
+                    <div class="d-flex flex-wrap images">
+                        @foreach($article->images()->limit(4)->get() as $image)
+                            <img src="{{ asset(env('UPLOADS_IMAGE'). "/" . $image->name) }}" class="w-100 p-2 radius" alt="Metaverse">
+                        @endforeach
+                    </div>
+                    <div class="d-flex justify-content-between mt-3">
+                        <div class="d-flex author flex-row align-items-center">
+                            <div class="d-flex flex-column justify-content-center">
+                                <h5 class="mb-0">{{ $article->name }}</h5>
+                                <p class="text-secondary mb-0">Created by <span class=" ">{{ $article->user()->get()->first()->name }}</span></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        @endforeach
+    </div>
+</div>
+</section>
+<!-- End  articles -->
 <!-- Gallery -->
 <section id="gallery" class=" my-lg-2">
     <div class="container title d-flex flex-column justify-content-between align-items-center flex-lg-row my-5">
